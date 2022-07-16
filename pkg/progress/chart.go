@@ -69,7 +69,6 @@ func drawChart(progress []Progress, total uint, output string) error {
 	const tMargin = 12
 
 	length := len(progress)
-	fmt.Println(length)
 	latestDate, latestHit := progress[length-1].time, progress[length-1].hit
 
 	p := plot.New()

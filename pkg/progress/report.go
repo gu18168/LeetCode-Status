@@ -4,6 +4,7 @@ import (
 	"html/template"
 	"io"
 	"os"
+	"path/filepath"
 
 	"github.com/go-git/go-git/v5"
 	"github.com/go-git/go-git/v5/plumbing/object"
@@ -32,7 +33,8 @@ func writeHTML(w io.Writer, problems *Problems, tree *object.Tree, chart string)
 		Problems:  problems.Problems,
 	}
 
-	tmpl := template.Must(template.ParseFiles("template.html"))
+	tmpl_path, _ := filepath.Abs("pkg/progress/template.html")
+	tmpl := template.Must(template.ParseFiles(tmpl_path))
 	tmpl.Execute(w, elements)
 
 	return nil
