@@ -56,7 +56,7 @@ type dateTicks struct{}
 func (dateTicks) Ticks(min, max float64) []plot.Tick {
 	tks := plot.DefaultTicks{}.Ticks(min, max)
 	for i, t := range tks {
-		tks[i].Label = fmt.Sprintf("%s", time.Unix(int64(t.Value), 0).Format("2006-01-02"))
+		tks[i].Label = time.Unix(int64(t.Value), 0).Format("2006-01-02")
 	}
 
 	return tks
